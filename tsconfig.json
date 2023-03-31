@@ -1,0 +1,8 @@
+{
+  "include": ["docs/**/*.ts", "docs/**/*.d.ts"],
+  "typeRoots": ["node_modules/@types"],
+  "compilerOptions": {
+    "types": ["three"],
+    "lib": ["ES2016", "DOM"]
+  }
+}

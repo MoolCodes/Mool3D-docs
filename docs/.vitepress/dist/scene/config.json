@@ -1,0 +1,167 @@
+[
+  {
+    "name": "mool",
+    "target": false,
+    "layeridx": 1,
+    "scale": 1,
+    "layers": [
+      {
+        "name": "./glb/building1.glb"
+      },
+      {
+        "name": "./glb/building2.glb"
+      },
+      {
+        "name": "./glb/building3.glb"
+      },
+      {
+        "name": "./glb/building5.glb"
+      },
+      {
+        "name": "./glb/building6.glb"
+      }
+    ]
+  },
+  {
+    "name": "mool",
+    "target": true,
+    "layeridx": 6,
+    "scale": 1,
+    "layers": [
+      {
+        "name": "./glb/building1.glb"
+      },
+      {
+        "name": "./glb/building2.glb"
+      },
+      {
+        "name": "./glb/building3.glb"
+      },
+      {
+        "name": "./glb/building5.glb"
+      },
+      {
+        "name": "./glb/building6.glb"
+      }
+    ]
+  },
+  {
+    "name": "animate",
+    "target": false,
+    "layeridx": 2,
+    "scale": 1,
+    "layers": [
+      {
+        "name": "./glb/animate.glb"
+      }
+    ]
+  },
+  {
+    "name": "control",
+    "target": true,
+    "layeridx": 3,
+    "scale": 1,
+    "layers": [
+      {
+        "name": "./glb/control.glb"
+      }
+    ]
+  },
+  {
+    "name": "hills",
+    "target": true,
+    "layeridx": 4,
+    "scale": 1,
+    "layers": [
+      {
+        "name": "./glb/hills.glb"
+      }
+    ]
+  },
+  {
+    "name": "tree",
+    "target": true,
+    "layeridx": 5,
+    "scale": 2,
+    "positionX": 150,
+    "positionY": 0,
+    "positionZ": 70,
+    "layers": [
+      {
+        "name": "./glb/tree.glb"
+      }
+    ]
+  },
+  {
+    "name": "tree",
+    "target": true,
+    "layeridx": 5,
+    "scale": 300,
+    "positionX": 0,
+    "positionY": 0,
+    "positionZ": 0,
+    "layers": [
+      {
+        "name": "./glb/road.glb",
+        "receiveShadow": true
+      }
+    ]
+  },
+  {
+    "name": "parade",
+    "target": true,
+    "layeridx": 7,
+    "scale": 0.01,
+    "positionX": 0,
+    "positionY": 0,
+    "positionZ": -500,
+    "layers": [
+      {
+        "name": "./glb/parade.glb",
+        "receiveShadow": true
+      }
+    ]
+  },
+  {
+    "name": "roam",
+    "target": true,
+    "layeridx": 8,
+    "scale": 2,
+    "positionX": 0,
+    "positionY": 0,
+    "positionZ": 0,
+    "layers": [
+      {
+        "name": "./glb/scene.glb"
+      }
+    ]
+  },
+  {
+    "name": "roam",
+    "target": true,
+    "layeridx": 8,
+    "scale": 10,
+    "positionX": 210,
+    "positionY": 10,
+    "positionZ": 0,
+    "layers": [
+      {
+        "name": "./glb/scene1.glb"
+      }
+    ]
+  },
+  {
+    "name": "roam",
+    "target": true,
+    "layeridx": 8,
+    "scale": 2,
+    "positionX": 50,
+    "positionY": 120,
+    "positionZ": 170,
+    "layers": [
+      {
+        "name": "./glb/scene2.glb"
+      }
+    ]
+  }
+]
