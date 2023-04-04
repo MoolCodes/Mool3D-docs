@@ -128,6 +128,7 @@ const init = () => {
     el: el as HTMLElement,
     tween: TWEEN,
     path: "../public/scene/",
+    bus,
   });
   setScene(5);
 };

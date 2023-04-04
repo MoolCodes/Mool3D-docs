@@ -45,4 +45,5 @@ export interface ViewerParams {
   el: HTMLElement;
   tween: any;
   path: string;
+  bus: any;
 }

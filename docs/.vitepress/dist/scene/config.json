@@ -163,5 +163,91 @@
         "name": "./glb/scene2.glb"
       }
     ]
+  },
+  {
+    "name": "roam",
+    "target": true,
+    "layeridx": 9,
+    "scale": 7,
+    "positionX": 0,
+    "positionY": 0,
+    "positionZ": 20,
+    "layers": [
+      {
+        "name": "./glb/mool/cabinet 1.glb"
+      },
+      {
+        "name": "./glb/mool/cabinet 2.glb"
+      },
+      {
+        "name": "./glb/mool/desk 1.glb"
+      },
+      {
+        "name": "./glb/mool/desk 2.glb"
+      },
+      {
+        "name": "./glb/mool/desk 3.glb"
+      },
+      {
+        "name": "./glb/mool/desk 4.glb"
+      },
+      {
+        "name": "./glb/mool/glass.glb"
+      },
+      {
+        "name": "./glb/mool/meeting room 1.glb"
+      },
+      {
+        "name": "./glb/mool/meeting room 2.glb"
+      },
+      {
+        "name": "./glb/mool/meeting room 3.glb"
+      },
+      {
+        "name": "./glb/mool/meeting room 4.glb"
+      },
+      {
+        "name": "./glb/mool/pot plant 1.glb"
+      },
+      {
+        "name": "./glb/mool/pot plant 2.glb"
+      },
+      {
+        "name": "./glb/mool/pot plant 3.glb"
+      },
+      {
+        "name": "./glb/mool/reception.glb"
+      },
+      {
+        "name": "./glb/mool/sofa.glb"
+      },
+      {
+        "name": "./glb/mool/stairs 1.glb"
+      },
+      {
+        "name": "./glb/mool/stairs 2.glb"
+      },
+      {
+        "name": "./glb/mool/toilet 1.glb"
+      },
+      {
+        "name": "./glb/mool/toilet 2.glb"
+      },
+      {
+        "name": "./glb/mool/toilet 3.glb"
+      },
+      {
+        "name": "./glb/mool/wall 1.glb"
+      },
+      {
+        "name": "./glb/mool/wall 2.glb"
+      },
+      {
+        "name": "./glb/mool/wall 3.glb"
+      },
+      {
+        "name": "./glb/mool/wall 4.glb"
+      }
+    ]
   }
 ]

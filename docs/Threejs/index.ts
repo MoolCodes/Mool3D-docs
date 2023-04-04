@@ -29,8 +29,7 @@ import ParticleEngineExamples from "./plugins/particleExamples";
 import { Tween } from "./plugins/particleTween";
 import { Fog } from "./plugins/fog";
 import { Water } from "./plugins/water";
-
-import bus from "../public/eventBus";
+import { Roam } from "./plugins/sceneRoam";
 
 const MAP_NAMES = [
   "map",
@@ -185,7 +184,7 @@ export class Viewer extends Params implements ViewerType {
       gAmGroup: this.gAmGroup,
       gRayGroup: this.gRayGroup,
       baseURL: this.options.path,
-      bus: bus,
+      bus: this.options.bus,
       animateFuntion: this.animate.animateFuntion,
     });
   }
@@ -382,6 +381,24 @@ export class Viewer extends Params implements ViewerType {
     particle.initialize(this.scene);
   }
   /*
+   *@description: 漫游
+   *@author: yangj
+   *@date: 2023-04-04 12:33:24
+   *@return:
+   */
+  initRoam(object: any, runCallback: FnParamsReturn<boolean, unknown>) {
+    this.roam = new Roam({
+      scene: this.gScenes[this.sceneidx],
+      camera: this.activeCamera,
+      animate: this.animate.animateFuntion,
+      controls: this.controls.orbitControls,
+      renderer: this.renderer,
+      object,
+      runCallback: runCallback,
+    });
+    this.roam.init();
+  }
+  /*
    *@description: 加载场景
    *@author: yangj
    *@date: 2023-03-04 13:37:42
@@ -401,12 +418,12 @@ export class Viewer extends Params implements ViewerType {
         this.scene.add(this.controls.transformControls);
       this.initAmbient();
     } else {
-      bus.emit("scene", {
+      this.options.bus.emit("scene", {
         type: "transition",
         value: true,
       });
       setTimeout(() => {
-        bus.emit("scene", {
+        this.options.bus.emit("scene", {
           type: "transition",
           value: false,
         });

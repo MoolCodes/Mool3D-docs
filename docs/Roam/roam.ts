@@ -61,7 +61,7 @@ export class Index extends Viewer {
         this.animate.animateFuntion.push((dt) => {
           !this.stop && this.mixer && this.mixer.update(dt);
         });
-        this.roam();
+        this.initroam();
       }
     );
   }
@@ -85,17 +85,8 @@ export class Index extends Viewer {
    *@date: 2023-03-28 14:19:48
    *@return:
    */
-  roam() {
-    this.Roam = new Roam({
-      scene: this.gScenes[this.sceneidx],
-      camera: this.activeCamera,
-      animate: this.animate.animateFuntion,
-      controls: this.controls.orbitControls,
-      renderer: this.renderer,
-      object: this.player,
-      runCallback: this.runCallback.bind(this),
-    });
-    this.Roam.init();
+  initroam() {
+    this.initRoam(this.player, this.runCallback.bind(this));
     this.setLight();
     setTimeout(() => {
       this.stop = true;

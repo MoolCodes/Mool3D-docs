@@ -1,4 +1,4 @@
-import { Viewer } from "../Threejs/index";
+import { Viewer } from "mool3d";
 import { Group, Color, SkinnedMesh } from "three";
 export class Index extends Viewer {
   pipeLineArr: THREE.Vector3[];

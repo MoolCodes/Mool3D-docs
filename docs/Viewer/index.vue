@@ -122,6 +122,7 @@ const init = () => {
     el: el as HTMLElement,
     tween: TWEEN,
     path: "../public/scene/",
+    bus: bus,
   });
 };
 const loadModel = () => {

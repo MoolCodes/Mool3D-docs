@@ -1,4 +1,4 @@
-import { Viewer } from "../Threejs/index";
+import { Viewer } from "mool3d";
 import { CameraHelper, PerspectiveCamera } from "three";
 export class Camera extends Viewer {
   constructor(options) {

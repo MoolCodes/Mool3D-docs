@@ -1,5 +1,7 @@
 import { Vector3, RepeatWrapping } from "three";
 import { Viewer } from "../Threejs/index";
+// import { Viewer } from "mool3d";
+
 export class Index extends Viewer {
   pointIndex: number;
   constructor(options) {
@@ -16,24 +18,6 @@ export class Index extends Viewer {
       rayleigh: 4,
       postion: [15, 0.5, -20],
     });
-    // this.initWater({
-    //   textureWidth: 500,
-    //   textureHeight: 500,
-    //   radius: 500,
-    //   waterPosition: new Vector3(0, -17, 0),
-    //   texture: this.souce.loadTexture({
-    //     path: "/docs/public/images/waternormals.jpg",
-    //     onLoad: function (texture) {
-    //       texture.wrapS = texture.wrapT = RepeatWrapping;
-    //     },
-    //   }),
-    //   sunPosition: new Vector3(-10, 10, -10),
-    //   sunColor: "#32669b",
-    //   waterColor: "#fff",
-    //   distortionScale: 0.7,
-    //   time: 1 / 50,
-    //   scene: this.scene,
-    // });
     this.ambient?.setLight(0.5, 0.7);
   }
   clearLight() {

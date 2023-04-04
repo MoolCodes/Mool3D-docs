@@ -1,4 +1,4 @@
-import { Viewer } from "../Threejs/index";
+import { Viewer } from "mool3d";
 import { City } from "../Threejs/shader/water";
 import { ShaderMaterial } from "three";
 export class Index extends Viewer {
