@@ -1,4 +1,4 @@
-import { Viewer } from "mool3d";
+import { Viewer } from "../Threejs/index";
 import Effect from "../Threejs/shader/effect";
 import { CircleGeometry, Mesh, Color } from "three";
 export class Index extends Viewer {

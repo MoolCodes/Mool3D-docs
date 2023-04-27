@@ -1,10 +1,10 @@
-import { Sprite as TSprite, SpriteMaterial, FrontSide } from "three";
+import { Sprite as TSprite, SpriteMaterial, FrontSide, Object3D } from "three";
 import { SpriteType, SpriteParams } from "../types/types";
-import { Object3D } from "./object";
-export class Sprite extends Object3D implements SpriteType {
+export class Sprite implements SpriteType {
   sprite: THREE.Sprite;
+  object: THREE.Object3D;
   constructor() {
-    super();
+    this.object = new Object3D();
   }
   init(options: SpriteParams) {
     this.sprite = new TSprite(
@@ -21,6 +21,7 @@ export class Sprite extends Object3D implements SpriteType {
     this.sprite.renderOrder = 10000;
     this.sprite.geometry.computeBoundingBox();
     this.sprite.geometry.center();
-    this.attach(this.sprite);
+    this.object.attach(this.sprite);
+    return this.object;
   }
 }

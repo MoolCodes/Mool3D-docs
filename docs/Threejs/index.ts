@@ -321,8 +321,7 @@ export class Viewer extends Params implements ViewerType {
    *@return:
    */
   loadSprite({ texture, name }: SpriteParams): THREE.Object3D {
-    let sprite = new Sprite();
-    sprite.init({
+    let sprite = new Sprite().init({
       texture,
       name,
     });

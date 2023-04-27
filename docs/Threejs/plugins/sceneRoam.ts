@@ -18,7 +18,7 @@ export class Roam implements RoamType {
   player: THREE.Mesh;
   controls: any;
   camera: THREE.Camera;
-  object: THREE.Object3D;
+  object: THREE.Group;
   environment: THREE.Group;
   scene: THREE.Scene;
   animate: Fn<any>[];

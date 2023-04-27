@@ -1,7 +1,8 @@
-import { AnimationMixer, LoadingManager, FrontSide } from "three";
-import { GLTFExtensionLoader } from "../threelibex/GLTFExtensionLoader";
+import { AnimationMixer, FrontSide } from "three";
 import { ModelType, ModelParams } from "../types/types";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 import axios from "axios";
 
@@ -95,9 +96,14 @@ export class Model implements ModelType {
     callback: Fn<any>
   ) {
     const that = this;
-    const loader = new GLTFExtensionLoader(new LoadingManager());
-    loader.load(url).then((gltf) => {
-      let ascene: THREE.Scene = gltf.scene;
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/Threejs/threelibex/");
+    dracoLoader.setDecoderConfig({ type: "js" }); //使用js方式解压
+    dracoLoader.preload(); //初始化_initDecoder 解码器
+    loader.setDRACOLoader(dracoLoader);
+    loader.load(url, (gltf) => {
+      let ascene: THREE.Group = gltf.scene;
       ascene.scale.set(configItem.scale, configItem.scale, configItem.scale);
       ascene.animations = gltf.animations;
       if (configItem.target) {
@@ -119,8 +125,11 @@ export class Model implements ModelType {
     sceneidx: number,
     callback: FnTwoParams<THREE.Group, THREE.AnimationClip[], unknown>
   ) {
-    const loader = new GLTFExtensionLoader(new LoadingManager());
-    loader.load(url).then((glb) => {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/examples/jsm/libs/draco/");
+    loader.setDRACOLoader(dracoLoader);
+    loader.load(url, (glb) => {
       this.addclips(glb.animations, sceneidx);
       callback(glb.scene, glb.animations);
     });
