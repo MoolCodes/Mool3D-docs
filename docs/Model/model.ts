@@ -1,4 +1,3 @@
-import { Viewer } from "../Threejs/index";
 import {
   LineBasicMaterial,
   Vector3,
@@ -6,7 +5,7 @@ import {
   Mesh,
   EdgesGeometry,
 } from "three";
-
+import { Viewer } from "mool3d";
 /************************
  *
  * 模型网格膨胀

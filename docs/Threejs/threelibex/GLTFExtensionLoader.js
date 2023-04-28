@@ -1,5 +1,6 @@
 import { DefaultLoadingManager } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { LoaderBase } from "./LoaderBase.js";
 
 export class GLTFExtensionLoader extends LoaderBase {

@@ -1,9 +1,7 @@
 import { RepeatWrapping, AnimationMixer } from "three";
 import { Viewer } from "../Threejs/index";
-import { Roam } from "../Threejs/plugins/sceneRoam";
 
 export class Index extends Viewer {
-  Roam: any;
   oldMater: any;
   player: any;
   animations: any;
@@ -61,7 +59,7 @@ export class Index extends Viewer {
         this.animate.animateFuntion.push((dt) => {
           !this.stop && this.mixer && this.mixer.update(dt);
         });
-        this.roam();
+        this.initroam();
       }
     );
   }
@@ -85,17 +83,8 @@ export class Index extends Viewer {
    *@date: 2023-03-28 14:19:48
    *@return:
    */
-  roam() {
-    this.Roam = new Roam({
-      scene: this.gScenes[this.sceneidx],
-      camera: this.activeCamera,
-      animate: this.animate.animateFuntion,
-      controls: this.controls.orbitControls,
-      renderer: this.renderer,
-      object: this.player,
-      runCallback: this.runCallback.bind(this),
-    });
-    this.Roam.init();
+  initroam() {
+    this.initRoam(this.player, this.runCallback.bind(this));
     this.setLight();
     setTimeout(() => {
       this.stop = true;
@@ -108,41 +97,41 @@ export class Index extends Viewer {
    *@return:
    */
   setAngle(angle) {
-    this.Roam.angle = -angle;
-    this.Roam.fwdPressed = true;
-    if (!this.Roam.isRun) {
+    this.roam.angle = -angle;
+    this.roam.fwdPressed = true;
+    if (!this.roam.isRun) {
       this.stop = false;
       this.mixer.clipAction(this.animations[0]).play();
-      this.Roam.isRun = true;
+      this.roam.isRun = true;
     }
   }
   end() {
-    this.Roam.fwdPressed = false;
-    if (this.Roam.isRun) {
+    this.roam.fwdPressed = false;
+    if (this.roam.isRun) {
       this.stop = true;
-      this.Roam.isRun = false;
+      this.roam.isRun = false;
     }
   }
   jump() {
-    if (this.Roam.playerIsOnGround) {
-      this.Roam.playerVelocity.y = this.Roam.params.playerVelocity;
+    if (this.roam.playerIsOnGround) {
+      this.roam.playerVelocity.y = this.roam.params.playerVelocity;
     }
   }
   first() {
-    this.Roam.params.firstPerson = !this.Roam.params.firstPerson;
-    if (!this.Roam.params.firstPerson) {
-      this.Roam.camera.position
-        .sub(this.Roam.controls.target)
+    this.roam.params.firstPerson = !this.roam.params.firstPerson;
+    if (!this.roam.params.firstPerson) {
+      this.roam.camera.position
+        .sub(this.roam.controls.target)
         .normalize()
         .multiplyScalar(5)
-        .add(this.Roam.controls.target);
-      this.Roam.camera.updateMatrixWorld();
-      this.Roam.object.visible = true;
-      // this.Roam.controls.saveState();
+        .add(this.roam.controls.target);
+      this.roam.camera.updateMatrixWorld();
+      this.roam.object.visible = true;
+      // this.roam.controls.saveState();
     } else {
-      this.Roam.camera.updateMatrixWorld();
-      this.Roam.object.visible = false;
-      this.Roam.controls.reset();
+      this.roam.camera.updateMatrixWorld();
+      this.roam.object.visible = false;
+      this.roam.controls.reset();
     }
   }
 }

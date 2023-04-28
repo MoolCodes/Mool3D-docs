@@ -1,4 +1,4 @@
-import { Viewer } from "../Threejs/index";
+import { Viewer } from "mool3d";
 import { Vector3, RepeatWrapping } from "three";
 
 export class Index extends Viewer {

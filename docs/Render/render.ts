@@ -1,6 +1,6 @@
-import { Viewer } from "../Threejs/index";
-import { Water, City } from "../Threejs/shader/water";
-import { Vector3, CircleGeometry, RepeatWrapping, ShaderMaterial } from "three";
+import { Viewer } from "mool3d";
+import { City } from "../Threejs/shader/water";
+import { Vector3, RepeatWrapping, ShaderMaterial } from "three";
 export class Render extends Viewer {
   constructor(options) {
     super(options);

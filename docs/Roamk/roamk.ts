@@ -1,9 +1,7 @@
 import { RepeatWrapping, Vector3, AnimationMixer } from "three";
+// import { Viewer } from "mool3d";
 import { Viewer } from "../Threejs/index";
-import { Roam } from "../Threejs/plugins/sceneRoam";
-
 export class Index extends Viewer {
-  Roam: any;
   oldMater: any;
   player: any;
   animations: any;
@@ -80,7 +78,7 @@ export class Index extends Viewer {
         this.animate.animateFuntion.push((dt) => {
           this.mixer && this.mixer.update(dt);
         });
-        this.roam();
+        this.initroam();
       }
     );
   }
@@ -105,17 +103,8 @@ export class Index extends Viewer {
    *@date: 2023-03-28 14:19:48
    *@return:
    */
-  roam() {
-    this.Roam = new Roam({
-      scene: this.gScenes[this.sceneidx],
-      camera: this.activeCamera,
-      animate: this.animate.animateFuntion,
-      controls: this.controls.orbitControls,
-      renderer: this.renderer,
-      object: this.player,
-      runCallback: this.runCallback.bind(this),
-    });
-    this.Roam.init();
+  initroam() {
+    this.initRoam(this.player, this.runCallback.bind(this));
     this.setLight();
   }
   /*
@@ -125,41 +114,43 @@ export class Index extends Viewer {
    *@return:
    */
   setAngle(angle) {
-    this.Roam.angle = -angle;
-    this.Roam.fwdPressed = true;
-    if (!this.Roam.isRun) {
+    this.roam.angle = -angle;
+    this.roam.fwdPressed = true;
+    if (!this.roam.isRun) {
       this.mixer.stopAllAction();
       this.mixer.clipAction(this.animations[0]).play();
-      this.Roam.isRun = true;
+      this.roam.isRun = true;
     }
   }
   end() {
-    this.Roam.fwdPressed = false;
-    if (this.Roam.isRun) {
+    this.roam.fwdPressed = false;
+    if (this.roam.isRun) {
       this.mixer.stopAllAction();
       this.mixer.clipAction(this.animations[1]).play();
-      this.Roam.isRun = false;
+      this.roam.isRun = false;
     }
   }
   jump() {
-    if (this.Roam.playerIsOnGround) {
-      this.Roam.playerVelocity.y = this.Roam.params.playerVelocity;
+    if (this.roam.playerIsOnGround) {
+      this.roam.playerVelocity.y = this.roam.params.playerVelocity;
     }
   }
   super() {
-    if (this.Roam.params.playerSpeed == 5) {
-      this.Roam.params.playerSpeed = 0.3;
-      this.Roam.params.playerVelocity = 5;
-      this.Roam.object.traverse((child) => {
-        if (child.material) {
-          child.material = this.oldMater;
+    console.log(this.roam);
+
+    if (this.roam.params.playerSpeed == 5) {
+      this.roam.params.playerSpeed = 0.3;
+      this.roam.params.playerVelocity = 5;
+      this.roam.object.traverse((child) => {
+        if ((child as THREE.Mesh).material) {
+          (child as THREE.Mesh).material = this.oldMater;
         }
       });
     } else {
-      this.Roam.object.traverse((child) => {
-        if (child.material) {
-          this.oldMater = child.material.clone();
-          child.material.map = this.souce.loadTexture({
+      this.roam.object.traverse((child) => {
+        if ((child as THREE.Mesh).material) {
+          this.oldMater = (child as any).material.clone();
+          (child as any).material.map = this.souce.loadTexture({
             path: "/docs/public/images/super.png",
             onLoad: function (texture) {
               texture.wrapS = texture.wrapT = RepeatWrapping;
@@ -168,8 +159,8 @@ export class Index extends Viewer {
           });
         }
       });
-      this.Roam.params.playerSpeed = 5;
-      this.Roam.params.playerVelocity = 20;
+      this.roam.params.playerSpeed = 5;
+      this.roam.params.playerVelocity = 20;
     }
   }
 }

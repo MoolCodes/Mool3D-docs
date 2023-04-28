@@ -1756,7 +1756,7 @@ export default {
          `;
     return getMaterial(fragmentShader);
   },
-  effect18() {
+  effect118() {
     const fragmentShader = `
          uniform float iTime;
          uniform vec2 iResolution;

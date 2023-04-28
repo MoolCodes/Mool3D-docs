@@ -1,3 +1,4 @@
+// import { Viewer } from "mool3d";
 import { Viewer } from "../Threejs/index";
 import { Group, Color, SkinnedMesh } from "three";
 export class Index extends Viewer {
